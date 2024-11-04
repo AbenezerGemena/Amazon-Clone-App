@@ -5,12 +5,14 @@ class CustomFormField extends StatefulWidget {
   final TextEditingController controller;
   final bool obscureText;
   final String hintText;
+  final RegExp validationRegExp;
   const CustomFormField({
     super.key,
     required this.title,
     required this.controller,
     required this.obscureText,
     required this.hintText, 
+    required this.validationRegExp
   });
  
   @override
@@ -34,9 +36,15 @@ class _CustomFormFieldState extends State<CustomFormField> {
             ),
           ),
         ),
-        TextField(
+        TextFormField(
           maxLines: 1,
           obscureText:widget.obscureText ,
+          validator: (value) {
+            if(value != null && widget.validationRegExp.hasMatch(value)){
+              return null;
+            }
+            return " please correct ${widget.hintText}";
+          },
           decoration: InputDecoration(
             hintText: widget.hintText,
             border: OutlineInputBorder(
