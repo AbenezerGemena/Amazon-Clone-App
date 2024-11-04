@@ -28,6 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     Size screenSize = Utils().getScreenSize(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: SizedBox(
           height: screenSize.height,
@@ -123,6 +124,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Text(
                           "New to Amazon",
+                          style: TextStyle(
+                            color: Colors.grey
+                          ),
                         ),
                       ),
                       Expanded(
