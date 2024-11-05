@@ -1,4 +1,6 @@
+import 'package:amazon/screen/home_page.dart';
 import 'package:amazon/screen/sign_in_screen.dart';
+import 'package:amazon/screen/sign_up_screen.dart';
 import 'package:amazon/utils/color_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
@@ -26,7 +28,7 @@ class AmazonClone extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen( )
+      home: const HomePage()
     );
   }
 }
