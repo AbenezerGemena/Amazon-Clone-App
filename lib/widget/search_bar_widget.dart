@@ -60,6 +60,7 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
                 ]
               ),
               child: TextField(
+                onSubmitted: (String query){},
                 readOnly: isReadOnly,
                 onTap: (){
                   if(isReadOnly){
