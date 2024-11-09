@@ -1,3 +1,4 @@
+import 'package:amazon/services/auth_service.dart';
 import 'package:amazon/utils/color_themes.dart';
 import 'package:amazon/utils/constants.dart';
 import 'package:amazon/utils/utils.dart';
@@ -14,19 +15,32 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+  Future<void> _signUp()async{
+    String? result = await _authService.signupUser(
+      name: _nameController.text, 
+      address: _addressController.text, 
+      email: _emailController.text, 
+      password: _passwordController.text
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(result ?? 'An unknown error occured'))
+      );
+  }
 
   
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
-    addressController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    _nameController.dispose();
+    _addressController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     
   }
   @override
@@ -84,28 +98,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             CustomFormField(
                               title: "Name", 
-                              controller: nameController, 
+                              controller: _nameController, 
                               obscureText: false,
                                hintText: "Enter your full Name", 
                                validationRegExp: NAME_VALIDATION_REGEX
                                ),
                             CustomFormField(
                               title: "Address", 
-                              controller: addressController, 
+                              controller: _addressController, 
                               obscureText: false,
                                hintText: "Enter your Address", 
                                validationRegExp: NAME_VALIDATION_REGEX
                                ),
                             CustomFormField(
                               title: 'Email', 
-                              controller: emailController, 
+                              controller: _emailController, 
                               obscureText: false,
                               hintText: 'Please enter your email',
                               validationRegExp: EMAIL_VALIDATION_REGEX,
                               ),
                            CustomFormField(
                               title: 'Password', 
-                              controller: passwordController, 
+                              controller: _passwordController, 
                               obscureText: true,
                               hintText: 'Please enter your password',
                               validationRegExp: PASSWORD_VALIDATION_REGEX,
@@ -118,7 +132,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                child: CustomMainButton(
                                   color: yellowColor, 
                                   isLoading: false, 
-                                  onPressed: (){},
+                                  onPressed: _signUp,
                                   child: const Text(
                                     "Sign Up",
                                     style: TextStyle(

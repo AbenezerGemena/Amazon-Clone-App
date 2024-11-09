@@ -1,3 +1,4 @@
+import 'package:amazon/widget/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,11 +12,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-       
-
+      appBar: SearchBarWidget(
+        isReadOnly: true,
+        hasBackButton: false,
       ),
+      body: Center(
+        child: Text(
+          "Home Screen"
+        ),
+      )
       
     );
   }

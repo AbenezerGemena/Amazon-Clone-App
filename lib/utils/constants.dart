@@ -1,4 +1,5 @@
 
+import 'package:amazon/screen/home_page.dart';
 import 'package:flutter/material.dart';
 
  
@@ -16,7 +17,7 @@ final RegExp NAME_VALIDATION_REGEX = RegExp(r"\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+");
 final String PLACEHOLDER_PFP =
     "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg";
 
-const double kAppBarHeight = 80;
+const double kAppBarHeight = 110;
 
 const String amazonLogoUrl =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png";
@@ -31,6 +32,20 @@ const List<String> categoriesList = [
   "Appliances",
   "Books, Toys",
   "Essential"
+];
+const List<Widget> screens = [
+          HomePage(),
+           Center(
+              child: Text("Search Screen"),
+            ),
+           Center(
+              child: Text("Cart Screen"),
+            ),
+           Center(
+              child: Text("Menu Screen"),
+            ),
+          
+
 ];
 
 
