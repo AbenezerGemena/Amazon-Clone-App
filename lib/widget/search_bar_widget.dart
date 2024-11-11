@@ -25,7 +25,7 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
   Widget build(BuildContext context) {
     Size screenSize = Utils().getScreenSize(context);
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 20),
       height: kAppBarHeight,
     
       decoration: const BoxDecoration(
