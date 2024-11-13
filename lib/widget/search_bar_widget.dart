@@ -12,7 +12,7 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
   @override
   final Size preferredSize;
 
-  OutlineInputBorder border = OutlineInputBorder(
+final  OutlineInputBorder border = OutlineInputBorder(
     borderRadius: BorderRadius.circular(7),
     borderSide: const BorderSide(
       color: Colors.grey,
@@ -25,7 +25,7 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
   Widget build(BuildContext context) {
     Size screenSize = Utils().getScreenSize(context);
     return Container(
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       height: kAppBarHeight,
     
       decoration: const BoxDecoration(
@@ -60,6 +60,7 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
                 ]
               ),
               child: TextField(
+                
                 onSubmitted: (String query){},
                 readOnly: isReadOnly,
                 onTap: (){
@@ -70,13 +71,16 @@ class SearchBarWidget extends StatelessWidget   implements PreferredSizeWidget{
                       );
                   }
                 },
+                textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: "Search for something in amazon",
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: const Icon(Icons.camera_alt_outlined ),
                   fillColor: Colors.white,
                   filled: true,
                   border: border,
-                  focusedBorder: border
-              
+                  focusedBorder: border,
+                
               
                 ),
               ),

@@ -38,7 +38,7 @@ class AmazonClone extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const ScreenLayout(),
     );
   }
 }

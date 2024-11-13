@@ -1,4 +1,12 @@
+import 'package:amazon/layouts/screen_layout.dart';
+import 'package:amazon/model/user_detail_model.dart';
+import 'package:amazon/utils/constants.dart';
+import 'package:amazon/widget/banner_add.dart';
+import 'package:amazon/widget/horizontal_list_catagories.dart';
+import 'package:amazon/widget/product_show_list.dart';
 import 'package:amazon/widget/search_bar_widget.dart';
+import 'package:amazon/widget/simple_product.dart';
+import 'package:amazon/widget/user_detail.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +17,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+ final ScrollController _scrollController =ScrollController();
+  double offset = 0;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener((){
+      setState(() {
+        offset = _scrollController.position.pixels;
+      });
+    
+
+    });
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +42,61 @@ class _HomePageState extends State<HomePage> {
         isReadOnly: true,
         hasBackButton: false,
       ),
-      body: Center(
-        child: Text(
-          "Home Screen"
-        ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            controller: _scrollController,
+            child: Column(
+              children: [
+                SizedBox(height: kAppBarHeight/3,),
+                
+                HorizontalListCatagories(),
+                BannerAdd(),
+          
+                ProductShowList(
+                  title: "Upto 70% off", 
+                  children: [
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
+                  ]
+                  ),
+                
+                ProductShowList(
+                  title: "Upto 60% off", 
+                  children: [
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
+                  ]
+                  ),
+                
+                ProductShowList(
+                  title: "Explore", 
+                  children: [
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
+                  ]
+                  ),
+                
+          
+                  
+                  
+              ],
+            ),
+          ),
+          UserDetail(offset: offset,userdetails: UserDetailModel(name: "Abenezer", address: "Adama"),)
+        ],
       )
       
     );
