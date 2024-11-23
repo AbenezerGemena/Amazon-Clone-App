@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
  final ScrollController _scrollController =ScrollController();
   double offset = 0;
+
   @override
   void initState() {
     super.initState();
@@ -52,43 +53,15 @@ class _HomePageState extends State<HomePage> {
                 
                 HorizontalListCatagories(),
                 BannerAdd(),
+                ProductShowList(title: "Upto 70% off", children: testChildren),
+                ProductShowList(title: "Upto 60% off", children: testChildren),
+                ProductShowList(title: "Upto 50% off", children: testChildren),
+                ProductShowList(title: "Explore", children: testChildren),
+
+
+
           
-                ProductShowList(
-                  title: "Upto 70% off", 
-                  children: [
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
-                  ]
-                  ),
-                
-                ProductShowList(
-                  title: "Upto 60% off", 
-                  children: [
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
-                  ]
-                  ),
-                
-                ProductShowList(
-                  title: "Explore", 
-                  children: [
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
-                    SimpleProduct(url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png")
-                  ]
-                  ),
-                
+               
           
                   
                   

@@ -1,6 +1,8 @@
 
 import 'package:amazon/screen/account_screen.dart';
+import 'package:amazon/screen/cart_screen.dart';
 import 'package:amazon/screen/home_page.dart';
+import 'package:amazon/widget/simple_product.dart';
 import 'package:flutter/material.dart';
 
  
@@ -37,15 +39,26 @@ const List<String> categoriesList = [
 const List<Widget> screens = [
           HomePage(),
           AccountScreen(),
-           Center(
-              child: Text("Cart Screen"),
-            ),
+          CartScreen(),
+         
            Center(
               child: Text("Menu Screen"),
             ),
           
 
 ];
+
+  List<Widget> testChildren = [
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/51QISbJp5-L._SX3000_.jpg"),
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png"),
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/11M5KkkmavL._SS70_.png"),
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/61jmYNrfVoL._SX3000_.jpg"),
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png"),
+    SimpleProduct(url: "https://m.media-amazon.com/images/I/11iTpTDy6TL._SS70_.png"),
+
+
+
+  ];
 
 
 const List<String> categoryLogos = [

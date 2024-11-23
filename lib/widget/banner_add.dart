@@ -34,6 +34,7 @@ class _BannerAddState extends State<BannerAdd> {
           Image.network(
             largeAds[currentAd], 
             width: double.infinity,
+            errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
             ),
           Positioned(
             bottom: 0,
