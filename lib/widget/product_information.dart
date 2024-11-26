@@ -1,5 +1,6 @@
 
 
+import 'package:amazon/utils/color_themes.dart';
 import 'package:amazon/utils/utils.dart';
 import 'package:amazon/widget/cost_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,19 +23,53 @@ class ProductInformation extends StatelessWidget {
     return SizedBox(
       width: screenSize.width/2,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            productName,
-            style: const TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-              overflow:TextOverflow.ellipsis, 
+         Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              productName,
+              maxLines: 2,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                letterSpacing: 0.9,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            
           ),
-          CostWidget(color: Colors.black, cost: 7654.097)
+          SizedBox(
+            height: screenSize.height*0.07,
+          ),
+            Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              child: CostWidget(color: Colors.black, cost: cost),
+            ),
+          ),
+        SizedBox(
+            height: screenSize.height*0.07,
+          ),
+                Align(
+            alignment: Alignment.centerLeft,
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                      text: "Sold by ",
+                      style: TextStyle(color: Colors.grey[700], fontSize: 14)),
+                  TextSpan(
+                      text: sellerName,
+                      style: const TextStyle(
+                          color: activeCyanColor, fontSize: 14)),
+                ],
+              ),
+            ),
+            )
+          
+          
           
        
       

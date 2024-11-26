@@ -1,37 +1,50 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class CostWidget extends StatelessWidget {
   final Color color;
   final double cost;
-
   const CostWidget({
     super.key,
     required this.color,
-    required this.cost
-    });
+    required this.cost,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final formatter = NumberFormat.currency(locale: 'en_US',symbol: '\$');
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          formatter.format(cost),
+          "₹",
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w800,
-            
+            color: color,
+            fontSize: 10,
+            fontFeatures: const [
+              FontFeature.superscripts(),
+            ],
           ),
-         
+        ),
+        Text(
+          cost.toInt().toString(),
+          style: TextStyle(
+            fontSize: 25,
+            color: color,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        Text(
+          (cost - cost.truncate()).toString(),
+          style: TextStyle(
+            fontSize: 10,
+            color: color,
+            fontFeatures: const [
+              FontFeature.superscripts(),
+            ],
+          ),
         )
-      
-      
-
       ],
-
     );
   }
 }
