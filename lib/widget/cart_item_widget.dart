@@ -1,3 +1,4 @@
+import 'package:amazon/model/product_model.dart';
 import 'package:amazon/utils/color_themes.dart';
 import 'package:amazon/utils/utils.dart';
 import 'package:amazon/widget/custom_square_button.dart';
@@ -5,12 +6,17 @@ import 'package:amazon/widget/product_information.dart';
 import 'package:flutter/material.dart';
 
 class CartItemWidget extends StatelessWidget {
-  const CartItemWidget({super.key});
+  final ProductModel productModel ;
+ const CartItemWidget({
+    super.key,
+    required this.productModel,
+    });
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = Utils().getScreenSize(context);
     return Container(
+      padding: const EdgeInsets.all(25),
       height: screenSize.height/2,
       width: screenSize.width,
       decoration: const BoxDecoration(
@@ -32,11 +38,19 @@ class CartItemWidget extends StatelessWidget {
               children: [
                 SizedBox(
                   width: screenSize.width/3,
-                  child: Image.network("https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png"),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Center(
+                      child: Image.network(
+                        productModel.url
+                        )
+                      )
+                    ),
                 ),
-              const  ProductInformation(
-                  productName: "Black shoes",
-                   cost: 700, sellerName: "amazon",
+               ProductInformation(
+                  productName: productModel.productName ,
+                   cost: productModel.cost, 
+                   sellerName: productModel.sellerName,
                    )
               ],
             ),
@@ -46,13 +60,13 @@ class CartItemWidget extends StatelessWidget {
             child: Row(
               children: [
                 CustomSquareButton(
-                    child: const Icon(Icons.remove),
                     onPressed: () {},
                     color: backgroundColor,
-                    dimension: 40),
+                    dimension: 40,
+                    child: const Icon(Icons.remove)),
                 CustomSquareButton(
                     onPressed: () {},
-                    color: Colors.white,
+                    color: backgroundColor,
                     dimension: 40,
                     child: const Text(
                       "0",
@@ -70,14 +84,37 @@ class CartItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-           flex: 1,
-           child: Container(
-            color: Colors.green,
         
+          Expanded(
+            flex: 1,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    CustomRoundedButton(onPressed: (){}, text: "Delete"),
+                   const  SizedBox(width: 10,),
+                    CustomRoundedButton(onPressed: (){}, text: "Save for later")
+                  ],
+                  
+                ),
+               const Padding(
+                  padding: EdgeInsets.only(top: 5),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "See more like this",
+                      style: TextStyle(
+                        color: activeCyanColor
+                      ),
+                    ),
+                  ),
+                )
 
-          ),
-          )
+
+              ],
+            )
+            )
         ],
       ),
 

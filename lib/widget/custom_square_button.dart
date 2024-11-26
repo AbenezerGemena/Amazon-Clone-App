@@ -22,6 +22,7 @@ class CustomSquareButton extends StatelessWidget {
         height: dimension,
         width: dimension,
         decoration: ShapeDecoration(
+          color: color,
           shape: RoundedRectangleBorder(
             side: const BorderSide(
               color: Colors.grey,
@@ -32,6 +33,32 @@ class CustomSquareButton extends StatelessWidget {
         ),
         child: Center(child: child),
         
+      ),
+    );
+  }
+}
+class CustomRoundedButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  const CustomRoundedButton({
+    super.key, 
+    required this.onPressed, 
+    required this.text}
+    );
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.grey[100]!,width: 1)
+        ),
+        child: Text(text),
+      
       ),
     );
   }
