@@ -2,6 +2,7 @@
 import 'package:amazon/screen/account_screen.dart';
 import 'package:amazon/screen/cart_screen.dart';
 import 'package:amazon/screen/home_page.dart';
+import 'package:amazon/screen/more_screen.dart';
 import 'package:amazon/widget/simple_product.dart';
 import 'package:flutter/material.dart';
 
@@ -40,10 +41,8 @@ const List<Widget> screens = [
           HomePage(),
           AccountScreen(),
           CartScreen(),
+          MoreScreen(),
          
-           Center(
-              child: Text("Menu Screen"),
-            ),
           
 
 ];
