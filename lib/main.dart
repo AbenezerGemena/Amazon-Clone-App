@@ -1,6 +1,7 @@
 import 'package:amazon/firebase_options.dart';
 import 'package:amazon/layouts/screen_layout.dart';
 import 'package:amazon/screen/home_page.dart';
+import 'package:amazon/screen/result_screen.dart';
 import 'package:amazon/screen/sign_in_screen.dart';
 import 'package:amazon/screen/sign_up_screen.dart';
 import 'package:amazon/utils/color_themes.dart';
@@ -38,7 +39,7 @@ class AmazonClone extends StatelessWidget {
         scaffoldBackgroundColor: backgroundColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const ScreenLayout(),
+      home: const ResultScreen(query: "query"),
     );
   }
 }
