@@ -13,35 +13,38 @@ class ResultScreen extends StatelessWidget {
       appBar: SearchBarWidget(isReadOnly: false, hasBackButton: true),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                 const TextSpan(
-                    text: "showing results for ",
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.black
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                   const TextSpan(
+                      text: "showing results for ",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black
+                      ),
                     ),
-                  ),
-                 TextSpan(
-                    text:query,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.black
-                    ) 
-                  )
-                ]
-              )
+                   TextSpan(
+                      text:query,
+                      style: const TextStyle(
+                        fontSize: 17,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black
+                      ) 
+                    )
+                  ]
+                )
+                ),
               ),
-            ),
+          ),
             Expanded(
               child: GridView.builder(
                 itemCount: 100,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
                   childAspectRatio: 2/3,
                   ), 
                 itemBuilder: (context, index) {

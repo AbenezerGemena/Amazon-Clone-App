@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RatingStar extends StatefulWidget {
-  const RatingStar({super.key});
+  const RatingStar(int rating, {super.key});
 
   @override
   State<RatingStar> createState() => _RatingStarState();

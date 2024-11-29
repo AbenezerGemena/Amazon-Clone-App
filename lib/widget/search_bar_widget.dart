@@ -1,3 +1,4 @@
+import 'package:amazon/screen/result_screen.dart';
 import 'package:amazon/screen/search_page.dart';
 import 'package:amazon/utils/color_themes.dart';
 import 'package:amazon/utils/constants.dart';
@@ -61,7 +62,15 @@ final  OutlineInputBorder border = OutlineInputBorder(
               ),
               child: TextField(
                 
-                onSubmitted: (String query){},
+                onSubmitted: (String query){
+                  if(query.isNotEmpty){
+                    Navigator.push(
+                      context,MaterialPageRoute(builder: (context)=>ResultScreen(query: query ))
+                       );
+                  }
+                 
+
+                },
                 readOnly: isReadOnly,
                 onTap: (){
                   if(isReadOnly){

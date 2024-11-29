@@ -11,40 +11,52 @@ class ResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screanSize = Utils().getScreenSize(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2,vertical: 5),
-      child: Column(
-        children: [
-          SizedBox(
-              width: screanSize.width/2,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border(
-                    
-                  )
- 
+    return GestureDetector(
+      onTap: (){
+
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2,vertical: 5),
+        child: Column(
+          children: [
+            SizedBox(
+                width: screanSize.width/2,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(color: Colors.grey[200]!,width: 1)
                 
-                ),
-                child: Column(
-                  children: [
-                    Image.network(
-                  productModel.url,
-                  ),
-                 Text(productModel.productName),
-                 CostWidget(color: const Color.fromARGB(255, 92, 9, 3), cost: productModel.cost),
-                     const RatingStar(),
-                  ],
-                ),
-              )
-            ),
-          
-         
-          
-          
-          
-        ],
       
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 3),
+                    child: Column(
+                      children: [
+                        Image.network(
+                      productModel.url,
+                      ),
+                     Text(productModel.productName, maxLines: 1,overflow: TextOverflow.ellipsis,),
+                     SizedBox(
+                      height: screanSize.height/45,
+                      
+                      child: FittedBox(child: CostWidget(color: const Color.fromARGB(255, 92, 9, 3), cost: productModel.cost))),
+                     SizedBox(
+                      width : screanSize.width/4,
+                      child:  FittedBox(child: RatingStar(productModel.rating))
+                      ),
+                      ],
+                    ),
+                  ),
+                )
+              ),
+            
+           
+            
+            
+            
+          ],
+        
+        ),
       ),
     );
   }
